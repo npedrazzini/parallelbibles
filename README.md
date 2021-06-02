@@ -1,5 +1,8 @@
 # parallelbibles
 
+Word-alignment models for Bible translations in 100+ historical and contemporary languages
+
+
 ## Requirements
 
 1. Installation and dependencies: 
@@ -61,6 +64,20 @@ This will prompt you to enter:
 NB:
 - *NULL* will indicate that the model did not find a match for the word in the target language
 - *NA* will indicate that the target language did not have a Bible translations of that particular verse in the first place (e.g. some languages lack a translation for the whole Old Testament). 
+
+## Calculate semantic similarity and build semantic maps
+
+> NB: This script works, but is still in the workings. It is an adaptation of the code written by Bernhard Wälchli for their 2010 paper [Similarity Semantics and Building Probabilistic Semantic Maps from Parallel Texts](https://journals.dartmouth.edu/cgi-bin/WebObjects/Journals.woa/xmlpage/1/article/356?htmlOnce=yes).
+
+Run `./scripts/MDS.py` from the root directory.
+
+This will:
+1. Create a folder in the directory *modelname/\_TARGETWORDS\_* called *word-MDS*, which will contain all the outputs of *MDS.py*.
+2. Generate a series of files and an R script to plot semantic maps using multi-dimensional scaling (MDS).
+
+This will prompt you to enter:
+1. the name of the model you want to use
+2. the target word
 
 # Pretrained models
 
