@@ -7,77 +7,76 @@ Word-alignment models for Bible translations in 100+ historical and contemporary
 
 1. Installation and dependencies: 
 
-Clone the repository:
+Download or clone the repository:
 
 `$ git clone https://github.com/npedrazzini/parallelbibles`
 
-From the root directory (./parallelbibles), build the repository by running:
+From the root directory (./parallelbibles), build the repository:
 
 `$ make`
 
-This will download and build [SyMGIZA++](https://github.com/emjotde/symgiza-pp), and install the required dependencies.
+This will download and build [SyMGIZA++](https://github.com/emjotde/symgiza-pp), and install all the required dependencies.
 
 2. XML files, which can be of two formats:
  
-a. OPUS (untokenized) (https://opus.nlpl.eu/bible-uedin.php)
+a. OPUS (untokenized) (from https://opus.nlpl.eu/bible-uedin.php)
 
-b. PROIEL
+b. PROIEL (from https://proiel.github.io)
 
-In this repository there are currently PROIEL XMLs for New Testament Greek, Old Church Slavonic and Gothic, but those in any languages (for which a Bible translation exists) can be downloaded from https://proiel.github.io, provided that they are not already covered by OPUS (e.g. Latin).
+This repository comes with OPUS XMLs (in original-xmls/opus-xmls) and PROIEL XMLs for New Testament Greek, Old Church Slavonic and Gothic (in original/proiel-xmls).
 
 ## Train word-alignment models
 
-This step will: 
+`$ ./train.sh`
 
+This step will: 
 1. convert OPUS/PROIEL XML files to GIZA-readable CSV files
 2. train a word-alignment model for each target language
 3. make GIZA's outputs easily readable and queryable 
 
-From the root directory simply run: 
-
-`$ ./train.sh`
-
-This will ask you:
-1. to specify the input XML format (OPUS, PROIEL, or mixed)
-2. to enter the desired source language
-3. to enter the target languages
-4. whether you want your model to strip punctuation
-5. whether you want to bring everything to lowercase
-6. to provide a name for your model
+You will be prompted to:
+1. specify the input XML format (OPUS, PROIEL, or mixed)
+2. enter the desired source language
+3. enter the target languages (or have all the remaining as targets)
+4. specify if you want to strip punctuation
+5. specify if you want to bring everything to lowercase
+6. provide a name for your model
 
 NB: the chosen languages must be entered in their ISO 639-2(B) code. See [here](https://www.loc.gov/standards/iso639-2/php/code_list.php) for a list.
 
 ## Extract a word and its translations
 
-This step will:
-1. extract every occurrence of a word in the source language and its translation in the target languages.
-2. output a CSV file for each word. The file will contain one occurrence per line, its citation (Bible verse), context, and the translations in each target language. 
-
-From the root directory simply run: 
-
 `$ ./extract.sh`
 
-This will prompt you to enter:
+This step will:
+1. extract every occurrence of a word in the source language and its translation in the target languages.
+2. output a CSV file for each word. The file will contain one occurrence per line, its citation (Bible verse), context, and the translations in each target language.
+
+You will be prompted to enter:
 1. the name of the model you want to use
 2. a target word
 
 NB:
-- *NULL* will indicate that the model did not find a match for the word in the target language
+- *NULL* will indicate that the model did not find a match for the word in the target language.
 - *NA* will indicate that the target language did not have a Bible translations of that particular verse in the first place (e.g. some languages lack a translation for the whole Old Testament). 
 
 ## Calculate semantic similarity and build semantic maps
 
-> NB: This script works, but is still in the workings. It is an adaptation of the code written by Bernhard Wälchli for their 2010 paper [Similarity Semantics and Building Probabilistic Semantic Maps from Parallel Texts](https://journals.dartmouth.edu/cgi-bin/WebObjects/Journals.woa/xmlpage/1/article/356?htmlOnce=yes).
+> These scripts are an adaptation of the code by [[1]](#1).
 
-Run `./scripts/MDS.py` from the root directory.
+- `./scripts/MDS-simple.py`: simple multi-dimensional scaling (MDS).
+- `./scripts/MDS-kriging.py`: multi-dimensional scaling + Kriging (to draw lines around clusters probabilstically).
 
-This will:
-1. Create a folder in the directory *modelname/\_TARGETWORDS\_* called *word-MDS*, which will contain all the outputs of *MDS.py*.
-2. Generate a series of files and an R script to plot semantic maps using multi-dimensional scaling (MDS).
+By running either of the scripts you will be prompted to enter:
+1. the name of the model you want to use.
+2. a target word.
 
-This will prompt you to enter:
-1. the name of the model you want to use
-2. the target word
+This will create a directory *modelname/\_TARGETWORDS\_/word-MDS*, containing all the outputs. The relevant ones to plot semantic maps will be: 
+- *word-MDS.R*: an R script to generate the semantic maps.
+- *word-data.txt*: the original data.
+- *word-matrix.txt*: distance matrix between source word and target words.
+
+By running *word-MDS.R* in R (the folder *modelname/\_TARGETWORDS\_/word-MDS* can also be opened as an R project) a PDF file will be generated containing all the plots (of either the simple-MDS or the MDS+Kriging type).
 
 # Pretrained models
 
@@ -90,9 +89,12 @@ Four pretrained models currently come with this repository:
 
 You can directly extract target words from either of these models by running `$ ./extract.sh`. You will be prompted to enter the name of the model you want to use.
 
-# Disclaimer
-The following languages are not yet included: 
+# TODO
+1. Include the following languages: 
+a. In all models: *vie*, *kan*, *djk*, *kek*, *acu*, *agr*, *mal*
+b. In *model4-LC-P* only: *mar*, *mya*, *nep*, *tel*
+2. Fix issue with display of some non-Latin characters in PDF output (notably all Arabic!). Note that the characters display normally in R studio (i.e. it must be an issue with both base R *pdf* and *CairoPDF*).
 
-a. From all models: *vie*, *kan*, *djk*, *kek*, *acu*, *agr*, *mal*
-
-b. From *model4-LC-P* only: *mar*, *mya*, *nep*, *tel*
+## References
+<a id="1">[1]</a> 
+Wälchli, Bernhard. 2010. Similarity Semantics and Building Probabilistic Semantic Maps from Parallel Texts. *Linguistic Discovery* 8(1). 331-371. DOI:[10.1349/PS1.1537-0852.A.356](http://dx.doi.org/10.1349/PS1.1537-0852.A.356)
