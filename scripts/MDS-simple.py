@@ -53,7 +53,7 @@ else:
 
     def writeforr(f,aa,acol,arow): #saves the input data text file for R
         try:
-            with open('./{}/_TARGETWORDS_/{}-MDS/'.format(directme, word)+f+'-fuerR.txt','w') as f:  #assumes your project directory also includes your R project
+            with open('./{}/_TARGETWORDS_/{}-MDS/'.format(directme, word)+f+'-data.txt','w') as f:  #assumes your project directory also includes your R project
                 tt=" "
                 for i in range(len(acol)):
                     tt+=acol[i]+" "
@@ -135,10 +135,10 @@ else:
         csv_writer.writerows(abor)
     print('Now writing {}-wholeor.txt'.format(filename))
 
-    with open('./{}/_TARGETWORDS_/{}-MDS/'.format(directme, word)+filename+"-wholemix.txt", 'w') as fi:
+    with open('./{}/_TARGETWORDS_/{}-MDS/'.format(directme, word)+filename+"-matrix.txt", 'w') as fi:
         csv_writer = csv.writer(fi, delimiter= '\t')
         csv_writer.writerows(abmix)
-    print('Now writing {}-wholemix.txt'.format(filename))
+    print('Now writing {}-matrix.txt'.format(filename))
 
     with open('./{}/_TARGETWORDS_/{}-MDS/'.format(directme, word)+filename+"-rownames.txt", 'w') as fi:
         csv_writer = csv.writer(fi, delimiter= '\t')
@@ -193,14 +193,14 @@ else:
     print('Now generating R script {}-MDS.R'.format(word))
 
     t="" #t is a string that will contain the R code 
-    t+="#Add the full path to \""+filename+"-fuerR.txt\" and \""+filename+"-wholemix.txt\" or start an R project in the same directory as those files\n"
-    t+="data<-read.table(\""+filename+"-fuerR.txt\")\n"
-    t+="matr<-read.table(\""+filename+"-wholemix.txt\")\n" #the R code pre-specifies the halfway identical count, if "wholemix" 
+    t+="#Add the full path to \""+filename+"-data.txt\" and \""+filename+"-matrix.txt\" or start an R project in the same directory as those files\n"
+    t+="data<-read.table(\""+filename+"-data.txt\")\n"
+    t+="matr<-read.table(\""+filename+"-matrix.txt\")\n" #the R code pre-specifies the halfway identical count, if "matrix" 
     # is changed to "wholeor" or "wholeand" here or in the R code text file, one of the other distance matrices is used for the plots
     #t+="coln<-read.table(\""+filename+"-colnames.txt\")[,1]\n"
     #t+="rown<-read.table(\""+filename+"-rownames.txt\")[,1]\n"
     #t+="rown->rownames(matr)->colnames(matr)\n"
-    #t+="write.table(matr,\""+filename+"-wholemix.txt\")\n"
+    #t+="write.table(matr,\""+filename+"-matrix.txt\")\n"
     t+="cmd<-cmdscale(matr,k=20)\n" #saves file with row and colnames
     t+="x<-cmd[,1];y<-cmd[,2]\n\n"
     #t+="plot(x,y,col=\"white\"); text(x,y,rown,cex=.6)\n" #plots dimensions 1 and 2 with rowname labels
@@ -315,7 +315,7 @@ else:
     finalaa = finalaa.transpose()
     finalaa.index=arow
     finalaa.columns=acol
-    finalaa.to_csv('./{}/_TARGETWORDS_/{}-MDS/{}-fuerR.txt'.format(directme, word, word), sep="\t")
+    finalaa.to_csv('./{}/_TARGETWORDS_/{}-MDS/{}-data.txt'.format(directme, word, word), sep="\t")
 
     print(finalaa)
 
