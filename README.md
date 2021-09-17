@@ -91,6 +91,7 @@ You can directly extract target words from either of these models by running `$ 
 
 # Languages
 **OT** = Old Testament
+
 **NT** = New Testament
 
 | ISO 639-3 | Language | Language family |  OT | NT |Notes |
@@ -201,6 +202,10 @@ You can directly extract target words from either of these models by running `$ 
 a. In all models: *vie*, *kan*, *djk*, *kek*, *agr*, *mal*
 b. In *model4-LC-P* only: *mar*, *mya*, *nep*, *tel*
 2. Fix issue with display of some non-Latin characters in PDF output (notably all Arabic!). Note that the characters display normally in R studio (i.e. it must be an issue with both base R *pdf* and *CairoPDF*).
+3. Add references for Kriging method
+4. Add info on how NULLs are treated in the models
+5. Add script to generate NEXUS files for NeighborNet analysis (SplitsTree4)
+6. Include functions lmap and boundaries in R script
 
 ## References
 <a id="1">[1]</a> 
