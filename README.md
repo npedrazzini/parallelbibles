@@ -90,108 +90,111 @@ Four pretrained models currently come with this repository:
 You can directly extract target words from either of these models by running `$ ./extract.sh`. You will be prompted to enter the name of the model you want to use.
 
 # Languages
-| ISO 639-3 | Language | Language family | Notes |
-|---|---|---|---|
-| acu | [Achuar-Shiwiar](https://www.ethnologue.com/language/acu) | Jivaroan |  |
-| afr | [Afrikaans](https://www.ethnologue.com/language/afr) | Indo-European > Germanic |  |
-| agr | [Awajún](https://www.ethnologue.com/language/agr) | Jivaroan |  |
-| ake | [Akawaio](https://www.ethnologue.com/language/ake) | Cariban |  |
-| sqi/alb | [Albanian](https://www.ethnologue.com/language/sqi) | Indo-European|  |
-| amh | [Amharic](https://www.ethnologue.com/language/amh) | Afro-Asiatic > Semitic |  |
-| amu | [Guerrero Amuzgo](https://www.ethnologue.com/language/amu) | Otomanguean |  |
-| ara | [Arabic](https://www.ethnologue.com/language/ara) | Afro-Asiatic > Semitic |  |
-| hye/arm | [Armenian](https://www.ethnologue.com/language/hye) | Indo-European |  |
-| baq | [Basque](https://www.ethnologue.com/language/eus) | Isolate |  |
-| bsn | [Barasana-Eduria](https://www.ethnologue.com/language/bsn) | Tucanoan |  |
-| bul | [Bulgarian](https://www.ethnologue.com/language/bul) | Indo-European > Balto-Slavic |  |
-| cak | [Kaqchikel](https://www.ethnologue.com/language/cak) | Mayan |  |
-| ceb | [Cebuano](https://www.ethnologue.com/language/ceb) | Austronesian > Malayo-Polynesian |  |
-| cha | [Chamorro](https://www.ethnologue.com/language/cha) | Austronesian > Malayo-Polynesian |  |
-| zho/chi | [Chinese](https://www.ethnologue.com/language/zho) | Sino-Tibetan > Sinitic |  |
-| chq | [Quiotepec Chinantec](https://www.ethnologue.com/language/chq) | Otomanguean |  |
-| chr | [Cherokee](https://www.ethnologue.com/language/chr) | Iroquoian |  |
-| chu | [Church Slavonic](https://www.ethnologue.com/language/chu) | Indo-European > Balto-Slavic|  |
-| cjp | [Cabécar](https://www.ethnologue.com/language/cjp) | Chibchan |  |
-| cni | [Asháninka](https://www.ethnologue.com/language/cni) | Maipurean |  |
-| cop | [Coptic](https://www.ethnologue.com/language/cop) | Afro-Asiatic > Egyptian |  |
-| crp | [Creoles and pidgins](https://www.ethnologue.com/language/hat/24) | Creole > French-based | The original XML files have the generic 'crp' code. This is however Haitian Creole (code hat) |
-| cze | [Czech](https://www.ethnologue.com/language/ces) | Indo-European > Balto-Slavic|  |
-| dan | [Danish](https://www.ethnologue.com/language/dan) | Indo-European > Germanic|  |
-| deu | [German](https://www.ethnologue.com/language/deu) | Indo-European > Germanic|  |
-| dik | [Southwestern Dinka](https://www.ethnologue.com/language/dik) | Nilo-Saharan > Nilotic |  |
-| dje | [Zarma](https://www.ethnologue.com/language/dje) |  Nilo-Saharan > Songhai |  |
-| dop | [Lukpa](https://www.ethnologue.com/language/dop) | Niger-Congo > Atlantic-Congo |  |
-| epo | [Esperanto](https://www.ethnologue.com/language/epo) | Constructed |  |
-| est | [Estonian](https://www.ethnologue.com/language/est) | Uralic |  |
-| ewe | [Ewe](https://www.ethnologue.com/language/ewe) | Niger-Congo > Atlantic-Congo |  |
-| fin | [Finnish](https://www.ethnologue.com/language/fin) | Uralic |  |
-| fra | [French](https://www.ethnologue.com/language/fra) | Indo-European > Italic|  |
-| gbi | [Galela](https://www.ethnologue.com/language/gbi) | West Papuan |  |
-| gla | [Scottish Gaelic](https://www.ethnologue.com/language/gla) | Indo-European > Celtic|  |
-| glv | [Manx](https://www.ethnologue.com/language/glv) | Indo-European > Celtic|  |
-| got | [Gothic]() | Indo-European > Germanic |  |
-| grc | [Ancient Greek (to 1453)](https://www.ethnologue.com/language/grc) | Indo-European |  |
-| ell/gre | [Modern Greek (1453-)](https://www.ethnologue.com/language/ell) | Indo-European |  |
-| guj | [Gujarati](https://www.ethnologue.com/language/guj) | Indo-European > Indo-Iranian |  |
-| heb | [Hebrew](https://www.ethnologue.com/language/heb) | Afro-Asiatic > Semitic |  |
-| hin | [Hindi](https://www.ethnologue.com/language/hin) | Indo-European > Indo-Iranian |  |
-| hrv | [Croatian](https://www.ethnologue.com/language/hrv) | Indo-European > Balto-Slavic |  |
-| hun | [Hungarian](https://www.ethnologue.com/language/hun) | Uralic |  |
-| ind | [Indonesian](https://www.ethnologue.com/language/ind) | Austronesian > Malayo-Polynesian |  |
-| isl | [Icelandic](https://www.ethnologue.com/language/isl) | Indo-European > Germanic |  |
-| ita | [Italian](https://www.ethnologue.com/language/ita) | Indo-European > Italic|  |
-| jak | [Jakun](https://www.ethnologue.com/language/jak) | Austronesian > Malayo-Polynesian |  |
-| jap | [Japanese](https://www.ethnologue.com/language/jpn) | Japonic |  |
-| jiv | [Shuar](https://www.ethnologue.com/language/jiv) | Jivaroan |  |
-| kab | [Kabyle-Amazigh](https://www.ethnologue.com/language/kab) | Afro-Asiatic > Berber |  |
-| kbh | [Camsá](https://www.ethnologue.com/language/kbh) | Isolate |  |
-| kor | [Korean](https://www.ethnologue.com/language/kor) | Koreanic |  |
-| lat | [Latin](https://www.ethnologue.com/language/lat) | Indo-European > Italic|  |
-| lav | [Latvian](https://www.ethnologue.com/language/lav) | Indo-European > Balto-Slavic|  |
-| lit | [Lithuanian](https://www.ethnologue.com/language/lit) | Indo-European > Balto-Slavic|  |
-| mal | [Malayalam](https://www.ethnologue.com/language/mal) | Dravidian |  |
-| mam | [Mam](https://www.ethnologue.com/language/mam) | Mayan |  |
-| mao | [Maori](https://www.ethnologue.com/language/mri) | Austronesian > Malayo-Polynesian |  |
-| mar | [Marathi](https://www.ethnologue.com/language/mar) | Indo-European > Indo-Iranian |  |
-| mya | [Burmese](https://www.ethnologue.com/language/mya) | Sino-Tibetan > Tibeto-Burman|  |
-| nep | [Nepali](https://www.ethnologue.com/language/nep) | Indo-European > Indo-Iranian |  |
-| nhg | [Tetelcingo Nahuatl](https://www.ethnologue.com/language/nhg) | Uto-Aztecan |  |
-| nld | [Dutch](https://www.ethnologue.com/language/nld) |  Indo-European > Germanic|  |
-| nor | [Norwegian](https://www.ethnologue.com/language/nor) |  Indo-European > Germanic|  |
-| ojb | [Northwestern Ojibwa](https://www.ethnologue.com/language/ojb) | Algic > Algonquian |  |
-| pck | [Paite Chin](https://www.ethnologue.com/language/pck) | Sino-Tibetan > Tibeto-Burman |  |
-| pes | [Iranian Persian](https://www.ethnologue.com/language/pes) | Indo-European > Indo-Iranian |  |
-| plt | [Plateau Malagasy](https://www.ethnologue.com/language/plt) | Austronesian > Malayo-Polynesian |  |
-| pol | [Polish](https://www.ethnologue.com/language/pol) | Indo-European > Balto-Slavic|  |
-| por | [Portuguese](https://www.ethnologue.com/language/por) | Indo-European > Italic|  |
-| pot | [Potawatomi](https://www.ethnologue.com/language/pot) | Algic > Algonquian |  |
-| ppk | [Uma](https://www.ethnologue.com/language/ppk) | Austronesian > Malayo-Polynesian |  |
-| quc | [K'iche'](https://www.ethnologue.com/language/quc) | Mayan |  |
-| quw | [Tena Lowland Quichua](https://www.ethnologue.com/language/quw) | Quechuan |  |
-| rom | [Romany](https://www.ethnologue.com/language/rom) | Indo-European > Indo-Iranian |  |
-| ron/rum | [Romanian](https://www.ethnologue.com/language/ron) | Indo-European > Italic|  |
-| rus | [Russian](https://www.ethnologue.com/language/rus) | Indo-European > Balto-Slavic|  |
-| shi | [Tachelhit](https://www.ethnologue.com/language/shi) | Afro-Asiatic > Berber |  |
-| slk | [Slovak](https://www.ethnologue.com/language/slk) | Indo-European > Balto-Slavic|  |
-| slv | [Slovenian](https://www.ethnologue.com/language/slv) | Indo-European > Balto-Slavic |  |
-| sna | [Shona](https://www.ethnologue.com/language/sna) | Niger-Congo > Atlantic-Congo |  |
-| som | [Somali](https://www.ethnologue.com/language/som) | Afro-Asiatic > Cushitic |  |
-| spa | [Spanish](https://www.ethnologue.com/language/spa) | Indo-European > Italic |  |
-| srp | [Serbian](https://www.ethnologue.com/language/srp) | Indo-European > Balto-Slavic |  |
-| ssw | [Swati](https://www.ethnologue.com/language/ssw) | Niger-Congo > Atlantic-Congo |  |
-| swe | [Swedish](https://www.ethnologue.com/language/swe) | Indo-European > Germanic |  |
-| syr | [Syriac](https://www.ethnologue.com/language/syr) | Afro-Asiatic > Semitic |  |
-| tel | [Telugu](https://www.ethnologue.com/language/tel) | Dravidian |  |
-| tgl | [Tagalog](https://www.ethnologue.com/language/tgl) | Austronesian > Malayo-Polynesian |  |
-| tha | [Thai](https://www.ethnologue.com/language/tha) | Kra-Dai > Tai |  |
-| tmh | [Tamashek](https://www.ethnologue.com/language/tmh) | Afro-Asiatic > Berber  |  |
-| tur | [Turkish](https://www.ethnologue.com/language/tur) | Turkic |  |
-| ukr | [Ukrainian](https://www.ethnologue.com/language/ukr) | Indo-European > Balto-Slavic |  |
-| usp | [Uspanteco](https://www.ethnologue.com/language/usp) | Mayan |  |
-| wal | [Wolaytta](https://www.ethnologue.com/language/wal) | Afro-Asiatic > Omotic |  |
-| wol | [Wolof](https://www.ethnologue.com/language/wol) | Niger-Congo > Atlantic-Congo |  |
-| xho | [Xhosa](https://www.ethnologue.com/language/xho) | Niger-Congo > Atlantic-Congo |  |
-| zul | [Zulu](https://www.ethnologue.com/language/zul) | Niger-Congo > Atlantic-Congo |  |
+**OT** = Old Testament
+**NT** = New Testament
+
+| ISO 639-3 | Language | Language family |  OT | NT |Notes |
+|---|---|---|---|---|---|
+| acu | [Achuar-Shiwiar](https://www.ethnologue.com/language/acu) | Jivaroan |  N | Y  |   |
+| afr | [Afrikaans](https://www.ethnologue.com/language/afr) | Indo-European > Germanic |  Y | Y  |   |
+| agr | [Awajún](https://www.ethnologue.com/language/agr) | Jivaroan |  N |  Y |   |
+| ake | [Akawaio](https://www.ethnologue.com/language/ake) | Cariban |  N |  Y |   |
+| sqi/alb | [Albanian](https://www.ethnologue.com/language/sqi) | Indo-European|  Y |   Y|   |
+| amh | [Amharic](https://www.ethnologue.com/language/amh) | Afro-Asiatic > Semitic | Y |  N |   |
+| amu | [Guerrero Amuzgo](https://www.ethnologue.com/language/amu) | Otomanguean |  N | Y  |   |
+| ara | [Arabic](https://www.ethnologue.com/language/ara) | Afro-Asiatic > Semitic | Y  |  Y |   |
+| hye/arm | [Armenian](https://www.ethnologue.com/language/hye) | Indo-European |  Y | Y  |   |
+| baq | [Basque](https://www.ethnologue.com/language/eus) | Isolate |  N |  Y |   |
+| bsn | [Barasana-Eduria](https://www.ethnologue.com/language/bsn) | Tucanoan | N  |  Y |   |
+| bul | [Bulgarian](https://www.ethnologue.com/language/bul) | Indo-European > Balto-Slavic |  Y | Y  |   |
+| cak | [Kaqchikel](https://www.ethnologue.com/language/cak) | Mayan | N  | Y  |   |
+| ceb | [Cebuano](https://www.ethnologue.com/language/ceb) | Austronesian > Malayo-Polynesian |  Y | Y  |   |
+| cha | [Chamorro](https://www.ethnologue.com/language/cha) | Austronesian > Malayo-Polynesian |  Y |  Y |  OT only consists of the Psalms |
+| zho/chi | [Chinese](https://www.ethnologue.com/language/zho) | Sino-Tibetan > Sinitic | Y  |  Y |   |
+| chq | [Quiotepec Chinantec](https://www.ethnologue.com/language/chq) | Otomanguean | N  |  Y|   |
+| chr | [Cherokee](https://www.ethnologue.com/language/chr) | Iroquoian |  N |  Y |   |
+| chu | [Church Slavonic](https://www.ethnologue.com/language/chu) | Indo-European > Balto-Slavic|  N | Y  |   |
+| cjp | [Cabécar](https://www.ethnologue.com/language/cjp) | Chibchan | N  | Y  |   |
+| cni | [Asháninka](https://www.ethnologue.com/language/cni) | Maipurean | N  |  Y |   |
+| cop | [Coptic](https://www.ethnologue.com/language/cop) | Afro-Asiatic > Egyptian | N  | Y  |   |
+| crp | [Creoles and pidgins](https://www.ethnologue.com/language/hat/24) | Creole > French-based |  Y | Y  | The original XML files have the generic 'crp' code. This is however Haitian Creole (code hat) |
+| cze | [Czech](https://www.ethnologue.com/language/ces) | Indo-European > Balto-Slavic| Y  | Y  |   |
+| dan | [Danish](https://www.ethnologue.com/language/dan) | Indo-European > Germanic| Y  |  Y |   |
+| deu | [German](https://www.ethnologue.com/language/deu) | Indo-European > Germanic|  Y |  Y |   |
+| dik | [Southwestern Dinka](https://www.ethnologue.com/language/dik) | Nilo-Saharan > Nilotic |  N |  Y |   |
+| dje | [Zarma](https://www.ethnologue.com/language/dje) |  Nilo-Saharan > Songhai | Y  | Y  |   |
+| dop | [Lukpa](https://www.ethnologue.com/language/dop) | Niger-Congo > Atlantic-Congo | N  | Y  |   |
+| epo | [Esperanto](https://www.ethnologue.com/language/epo) | Constructed |  Y |  Y |   |
+| est | [Estonian](https://www.ethnologue.com/language/est) | Uralic | Y  |  Y |   |
+| ewe | [Ewe](https://www.ethnologue.com/language/ewe) | Niger-Congo > Atlantic-Congo | N  |  Y |   |
+| fin | [Finnish](https://www.ethnologue.com/language/fin) | Uralic | Y  | Y  |   |
+| fra | [French](https://www.ethnologue.com/language/fra) | Indo-European > Italic|  Y | Y  |   |
+| gbi | [Galela](https://www.ethnologue.com/language/gbi) | West Papuan |  N | Y  |   |
+| gla | [Scottish Gaelic](https://www.ethnologue.com/language/gla) | Indo-European > Celtic|  N |  Y | The only text included is the Gospel of Mark  |
+| glv | [Manx](https://www.ethnologue.com/language/glv) | Indo-European > Celtic|  Y |  Y |  The only text from the OT is the Book of Esther |
+| got | Gothic | Indo-European > Germanic |  N |  Y |   |
+| grc | [Ancient Greek (to 1453)](https://www.ethnologue.com/language/grc) | Indo-European | N  | Y  |   |
+| ell/gre | [Modern Greek (1453-)](https://www.ethnologue.com/language/ell) | Indo-European | Y  | Y  |   |
+| guj | [Gujarati](https://www.ethnologue.com/language/guj) | Indo-European > Indo-Iranian | N  | Y  |   |
+| heb | [Hebrew](https://www.ethnologue.com/language/heb) | Afro-Asiatic > Semitic |  Y | N |   |
+| hin | [Hindi](https://www.ethnologue.com/language/hin) | Indo-European > Indo-Iranian |  Y | Y  |   |
+| hrv | [Croatian](https://www.ethnologue.com/language/hrv) | Indo-European > Balto-Slavic |  Y | Y  |   |
+| hun | [Hungarian](https://www.ethnologue.com/language/hun) | Uralic | Y  | Y  |   |
+| ind | [Indonesian](https://www.ethnologue.com/language/ind) | Austronesian > Malayo-Polynesian |  Y | Y  |   |
+| isl | [Icelandic](https://www.ethnologue.com/language/isl) | Indo-European > Germanic |  Y |  Y |   |
+| ita | [Italian](https://www.ethnologue.com/language/ita) | Indo-European > Italic| Y  | Y  |   |
+| jak | [Jakun](https://www.ethnologue.com/language/jak) | Austronesian > Malayo-Polynesian | N  | Y  |   |
+| jap | [Japanese](https://www.ethnologue.com/language/jpn) | Japonic |  Y |  Y |   |
+| jiv | [Shuar](https://www.ethnologue.com/language/jiv) | Jivaroan |  N | Y  |   |
+| kab | [Kabyle-Amazigh](https://www.ethnologue.com/language/kab) | Afro-Asiatic > Berber |  N | Y  |   |
+| kbh | [Camsá](https://www.ethnologue.com/language/kbh) | Isolate | N  | Y |   |
+| kor | [Korean](https://www.ethnologue.com/language/kor) | Koreanic | Y  | Y  |   |
+| lat | [Latin](https://www.ethnologue.com/language/lat) | Indo-European > Italic|  Y | Y  |   |
+| lav | [Latvian](https://www.ethnologue.com/language/lav) | Indo-European > Balto-Slavic| N  | Y  |   |
+| lit | [Lithuanian](https://www.ethnologue.com/language/lit) | Indo-European > Balto-Slavic|  Y | Y  |   |
+| mal | [Malayalam](https://www.ethnologue.com/language/mal) | Dravidian | Y  |  Y |   |
+| mam | [Mam](https://www.ethnologue.com/language/mam) | Mayan |  N |  Y |   |
+| mao | [Maori](https://www.ethnologue.com/language/mri) | Austronesian > Malayo-Polynesian |  Y |  Y |   |
+| mar | [Marathi](https://www.ethnologue.com/language/mar) | Indo-European > Indo-Iranian |  Y |  Y |   |
+| mya | [Burmese](https://www.ethnologue.com/language/mya) | Sino-Tibetan > Tibeto-Burman|  Y | Y  |   |
+| nep | [Nepali](https://www.ethnologue.com/language/nep) | Indo-European > Indo-Iranian |  Y | Y  |   |
+| nhg | [Tetelcingo Nahuatl](https://www.ethnologue.com/language/nhg) | Uto-Aztecan |  N | Y  |   |
+| nld | [Dutch](https://www.ethnologue.com/language/nld) |  Indo-European > Germanic|  Y | Y  |   |
+| nor | [Norwegian](https://www.ethnologue.com/language/nor) |  Indo-European > Germanic| Y  |  Y |   |
+| ojb | [Northwestern Ojibwa](https://www.ethnologue.com/language/ojb) | Algic > Algonquian |  N |  Y |   |
+| pck | [Paite Chin](https://www.ethnologue.com/language/pck) | Sino-Tibetan > Tibeto-Burman | Y  |  Y |   |
+| pes | [Iranian Persian](https://www.ethnologue.com/language/pes) | Indo-European > Indo-Iranian |  Y |  Y |   |
+| plt | [Plateau Malagasy](https://www.ethnologue.com/language/plt) | Austronesian > Malayo-Polynesian |  Y | Y  |   |
+| pol | [Polish](https://www.ethnologue.com/language/pol) | Indo-European > Balto-Slavic|  Y |   Y|   |
+| por | [Portuguese](https://www.ethnologue.com/language/por) | Indo-European > Italic|  Y | Y  |   |
+| pot | [Potawatomi](https://www.ethnologue.com/language/pot) | Algic > Algonquian | N  | Y  |   |
+| ppk | [Uma](https://www.ethnologue.com/language/ppk) | Austronesian > Malayo-Polynesian | N  |  Y |   |
+| quc | [K'iche'](https://www.ethnologue.com/language/quc) | Mayan |  N | Y  |   |
+| quw | [Tena Lowland Quichua](https://www.ethnologue.com/language/quw) | Quechuan | N  | Y  |   |
+| rom | [Romany](https://www.ethnologue.com/language/rom) | Indo-European > Indo-Iranian |  N |  Y |   |
+| ron/rum | [Romanian](https://www.ethnologue.com/language/ron) | Indo-European > Italic|  Y | Y  |   |
+| rus | [Russian](https://www.ethnologue.com/language/rus) | Indo-European > Balto-Slavic|  Y | Y  |   |
+| shi | [Tachelhit](https://www.ethnologue.com/language/shi) | Afro-Asiatic > Berber | N  | Y  |   |
+| slk | [Slovak](https://www.ethnologue.com/language/slk) | Indo-European > Balto-Slavic| Y  |  Y |   |
+| slv | [Slovenian](https://www.ethnologue.com/language/slv) | Indo-European > Balto-Slavic |  Y |  Y |   |
+| sna | [Shona](https://www.ethnologue.com/language/sna) | Niger-Congo > Atlantic-Congo | Y  | Y |   |
+| som | [Somali](https://www.ethnologue.com/language/som) | Afro-Asiatic > Cushitic | Y  |   Y|   |
+| spa | [Spanish](https://www.ethnologue.com/language/spa) | Indo-European > Italic |  Y |  Y |   |
+| srp | [Serbian](https://www.ethnologue.com/language/srp) | Indo-European > Balto-Slavic | Y  | Y  |   |
+| ssw | [Swati](https://www.ethnologue.com/language/ssw) | Niger-Congo > Atlantic-Congo |  N |  Y |   |
+| swe | [Swedish](https://www.ethnologue.com/language/swe) | Indo-European > Germanic |  Y | Y  |   |
+| syr | [Syriac](https://www.ethnologue.com/language/syr) | Afro-Asiatic > Semitic |  N |  Y |   |
+| tel | [Telugu](https://www.ethnologue.com/language/tel) | Dravidian | Y  | Y  |   |
+| tgl | [Tagalog](https://www.ethnologue.com/language/tgl) | Austronesian > Malayo-Polynesian | Y  |  Y |   |
+| tha | [Thai](https://www.ethnologue.com/language/tha) | Kra-Dai > Tai | Y  |  Y |   |
+| tmh | [Tamashek](https://www.ethnologue.com/language/tmh) | Afro-Asiatic > Berber  | Y  | Y  |   |
+| tur | [Turkish](https://www.ethnologue.com/language/tur) | Turkic |  Y | Y  |   |
+| ukr | [Ukrainian](https://www.ethnologue.com/language/ukr) | Indo-European > Balto-Slavic | N  |  Y |   |
+| usp | [Uspanteco](https://www.ethnologue.com/language/usp) | Mayan |  N |  Y |   |
+| wal | [Wolaytta](https://www.ethnologue.com/language/wal) | Afro-Asiatic > Omotic |  N |  Y |   |
+| wol | [Wolof](https://www.ethnologue.com/language/wol) | Niger-Congo > Atlantic-Congo |  N |  Y |   |
+| xho | [Xhosa](https://www.ethnologue.com/language/xho) | Niger-Congo > Atlantic-Congo | Y  |  Y |   |
+| zul | [Zulu](https://www.ethnologue.com/language/zul) | Niger-Congo > Atlantic-Congo |  N |  Y |   |
 
 # TODO
 1. Include the following languages: 
