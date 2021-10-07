@@ -15,7 +15,7 @@ From the root directory (./parallelbibles), build the repository:
 
 `$ make`
 
-This will download and build [SyMGIZA++](https://github.com/emjotde/symgiza-pp), and install all the required dependencies.
+This will download and build [SyMGIZA++](https://github.com/emjotde/symgiza-pp)[[1]](#1), and install all the required dependencies.
 
 2. XML files, which can be of two formats:
  
@@ -62,10 +62,10 @@ NB:
 
 ## Calculate semantic similarity and build semantic maps
 
-> These scripts are an adaptation of the code by [[1]](#1).
+> These scripts are an adaptation of the code by [[2]](#2).
 
-- `./scripts/MDS-simple.py`: simple multi-dimensional scaling (MDS).
-- `./scripts/MDS-kriging.py`: multi-dimensional scaling + Kriging (to draw lines around clusters probabilstically).
+- `./scripts/postprocessing/MDS-simple.py`: simple multi-dimensional scaling (MDS).
+- `./scripts/postprocessing/MDS-kriging.py`: multi-dimensional scaling + Kriging (to draw lines around clusters probabilstically).
 
 By running either of the scripts you will be prompted to enter:
 1. the name of the model you want to use.
@@ -77,6 +77,18 @@ This will create a directory *modelname/\_TARGETWORDS\_/word-MDS*, containing al
 - *word-matrix.txt*: distance matrix between source word and target words.
 
 By running *word-MDS.R* in R (the folder *modelname/\_TARGETWORDS\_/word-MDS* can also be opened as an R project) a PDF file will be generated containing all the plots (of either the simple-MDS or the MDS+Kriging type).
+
+**NB**: `MDS-kriging.py` relies on the R package [qlcVisualize](https://rdrr.io/github/cysouw/qlcVisualize/). If you have issues installing it, simply save the two functions we need from that package (`lmap` and `boundary`) by running the script *./scripts/postprocessing/lmap-boundary-functions.R*.
+
+## Hierarchical clusters and NeighborNets
+
+- *./scripts/postprocessing/splitstree.R*: hierarchical clustering and NeighborNet analysis of the languages based on a criterion *x* (default: null-constructions)
+
+The script takes as input the output *modelNAME/_TARGETWORDS_/word-MDS/word-data.txt* of `MDS-simple.py` or `MDS-kriging.py` (which is the same as the output *word.csv* of `./extract.sh` minus the column "context").
+
+The script will: 
+1. Plot a simple hierarchical cluster.
+2. Generate a Nexus (.nex) file for NeighborNet analysis, to be visualized with the [SplitsTree4](https://uni-tuebingen.de/en/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/algorithms-in-bioinformatics/software/splitstree/) software.
 
 # Pretrained models
 
@@ -204,9 +216,12 @@ b. In *model4-LC-P* only: *mar*, *mya*, *nep*, *tel*
 2. Fix issue with display of some non-Latin characters in PDF output (notably all Arabic!). Note that the characters display normally in R studio (i.e. it must be an issue with both base R *pdf* and *CairoPDF*).
 3. Add references for Kriging method
 4. Add info on how NULLs are treated in the models
-5. Add script to generate NEXUS files for NeighborNet analysis (SplitsTree4)
-6. Include functions lmap and boundaries in R script
+7. Add on how many NAs we have per language based on best model
+8. Add what the best model is, and why.
 
 ## References
 <a id="1">[1]</a> 
+Junczys-Dowmunt, Marcin & Arkadiusz Szał. 2012. SyMGiza++: Symmetrized Word Alignment Models for Machine Translation. In Pascal Bouvry, Mieczyslaw A. Klopotek, Franck Leprévost, Malgorzata Marciniak, Agnieszka Mykowiecka & Henryk Rybinski (eds.), *Security and Intelligent Information Systems (SIIS)* (Lecture Notes in Computer Science 7053), 379-390. Heidelberg-Berlin: Springer.
+
+<a id="2">[2]</a> 
 Wälchli, Bernhard. 2010. Similarity Semantics and Building Probabilistic Semantic Maps from Parallel Texts. *Linguistic Discovery* 8(1). 331-371. DOI:[10.1349/PS1.1537-0852.A.356](http://dx.doi.org/10.1349/PS1.1537-0852.A.356)
