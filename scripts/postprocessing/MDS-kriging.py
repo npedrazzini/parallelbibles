@@ -191,7 +191,7 @@ else:
     t="" #t is a string that will contain the R code 
     t+="#Add the full path to \""+filename+"-data.txt\" and \""+filename+"-matrix.txt\" or start an R project in the same directory as those files\n"
     t+="install.packages('Cairo') #if you haven't already\n"
-    t+="library(Cairo)\n"
+    t+="library(Cairo)\n" 
     t+="data<-read.table(\""+filename+"-data.txt\")\n"
     t+="matr<-read.table(\""+filename+"-matrix.txt\")\n" #the R code pre-specifies the halfway identical count, if "matrix" 
 
