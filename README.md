@@ -15,7 +15,7 @@ From the root directory (./parallelbibles), build the repository:
 
 `$ make`
 
-This will download and build [SyMGIZA++](https://github.com/emjotde/symgiza-pp)[[1]](#1), and install all the required dependencies.
+This will download and build [SyMGIZA++](https://github.com/emjotde/symgiza-pp) [[1]](#1) and install all the required dependencies.
 
 2. XML files, which can be of two formats:
  
@@ -23,9 +23,11 @@ a. OPUS (untokenized) (from https://opus.nlpl.eu/bible-uedin.php)
 
 b. PROIEL (from https://proiel.github.io)
 
-This repository comes with OPUS XMLs (in original-xmls/opus-xmls) and PROIEL XMLs for New Testament Greek, Old Church Slavonic and Gothic (in original/proiel-xmls).
+This repository comes with OPUS XMLs (in original-xmls/opus-xmls) and PROIEL XMLs for New Testament Greek, Old Church Slavonic and Gothic (in original-xmls/proiel-xmls).
 
 ## Train word-alignment models
+
+> This repository already comes with four [pre-trained models](https://github.com/npedrazzini/parallelbibles#pretrained-models). Check them out!
 
 `$ ./train.sh`
 
@@ -44,51 +46,46 @@ You will be prompted to:
 
 NB: the chosen languages must be entered in their ISO 639-3 code. See [here](https://iso639-3.sil.org/code_tables/639/read) for the complete list and the [table](https://github.com/npedrazzini/parallelbibles#languages) below for the languages included in the models.
 
-## Extract a word and its translations
+## Extract words and their translations 
 
 `$ ./extract.sh`
 
 This step will:
-1. extract every occurrence of a word in the source language and its translation in the target languages.
-2. output a CSV file for each word. The file will contain one occurrence per line, its citation (Bible verse), context, and the translations in each target language.
+1. extract every occurrence of a word (or multiple words) in the source language and its translation in the target languages.
+2. (optionally) generate scripts to run multidimensional scaling (MDS) on the dataset and Kriging (to draw lines around clusters probabilstically)
 
 You will be prompted to enter:
-1. the name of the model you want to use
-2. a target word
+1. the name of the model you want to use (e.g. 'model2-LC-NP')
+2. a target word (e.g. 'when') or multiple target words separated by hyphen (e.g. 'when-while-since')
+3. whether you want to generate the scripts necessary to run MDS on the dataset ('yes' or 'no')
+4. whether you also want to apply Kriging to the MDS maps ('yes' or 'no')
+5. whether you only want to extract words from the New Testament ('yes') or from bothe the Old and the New Testament ('no') <sup>[*](#myfootnote1)</sup>
 
-NB:
-- *NULL* will indicate that the model did not find a match for the word in the target language.
-- *NA* will indicate that the target language did not have a Bible translations of that particular verse in the first place (e.g. some languages lack a translation for the whole Old Testament). 
+The output will be a folder named as the target word (or words, hyphen-separated, if extracting multiple words at once) containing the following: 
+1. **word.csv**: CSV file for each word. The file will contain one occurrence per line, its citation (Bible verse), context, and the translations in each target language <sup>[**](#myfootnote2)</sup>.
 
-## Calculate semantic similarity and build semantic maps
+And if you chose to run MDS (with and without Kriging) it will also contain:
 
-> These scripts are an adaptation of the code by [[2]](#2).
+2. **word-MDS.R**: an R script to run MDS (and Kriging, if you chose to), generating a single PDF with one map per language. These maps are static and generated using base R. Best for distant-reading stages in the data exploration <sup>[***](#myfootnote3)</sup>.
+3. **word-plotly.R**: an R script (alternative to word-MDS.R) generating multiple HTML files using the R package plotly. These maps are interactive and let you hover over the data points and look at the citation and source word in context. Best for close-reading stages in the data exploration.
+4. **word-data.txt**: the original data.
+5. **word-matrix.txt**: distance matrix between source word and target words.
 
-- `./scripts/postprocessing/MDS-simple.py`: simple multi-dimensional scaling (MDS).
-- `./scripts/postprocessing/MDS-kriging.py`: multi-dimensional scaling + Kriging (to draw lines around clusters probabilstically).
+<a name="myfootnote1">*</a> This is because many languages lack the whole or large sections of the Old Testament, which will result in your dataset having many NAs (which you may or may not want to avoid).
 
-By running either of the scripts you will be prompted to enter:
-1. the name of the model you want to use.
-2. a target word.
+<a name="myfootnote2">**</a> **NB**: *NULL* will indicate that the model did not find a match for the word in the target language. *NA* will indicate that the target language did not have a Bible translations of that particular verse in the first place (e.g. some languages lack a translation for the whole Old Testament). 
 
-This will create a directory *modelname/\_TARGETWORDS\_/word-MDS*, containing all the outputs. The relevant ones to plot semantic maps will be: 
-- *word-MDS.R*: an R script to generate the semantic maps.
-- *word-data.txt*: the original data.
-- *word-matrix.txt*: distance matrix between source word and target words.
-
-By running *word-MDS.R* in R (the folder *modelname/\_TARGETWORDS\_/word-MDS* can also be opened as an R project) a PDF file will be generated containing all the plots (of either the simple-MDS or the MDS+Kriging type).
-
-**NB**: `MDS-kriging.py` relies on the R package [qlcVisualize](https://rdrr.io/github/cysouw/qlcVisualize/). If you have issues installing it, simply save the two functions we need from that package (`lmap` and `boundary`) by running the script *./scripts/postprocessing/lmap-boundary-functions.R*.
+<a name="myfootnote3">***</a> **NB 1**: This script is a heavy adaptation of the code by [[2]](#2). **NB 2**: The `lmap` function relies on the R package [qlcVisualize](https://rdrr.io/github/cysouw/qlcVisualize/). If you have issues installing it, simply save the two functions we need from that package by running the script *./scripts/postprocessing/lmap-boundary-functions.R* included in this repository. **NB 3**: The MDS script has been adapted so that it merges all translations with less than 10 occurrences with NULLs. The '10' threshold is arbitrary and was based on what seemed to be a common cut-off point between 'real' translations in the target language and casual correspondence between the source word and a specific lexical item in the target language. 
 
 ## Hierarchical clusters and NeighborNets
 
-- *./scripts/postprocessing/splitstree.R*: hierarchical clustering and NeighborNet analysis of the languages based on a criterion *x* (default: null-constructions)
+`./scripts/postprocessing/splitstree.R`: this script will perform hierarchical clustering and NeighborNet analysis of the languages based on a criterion *x* (default: NULL-constructions).
 
-The script takes as input the output *modelNAME/_TARGETWORDS_/word-MDS/word-data.txt* of `MDS-simple.py` or `MDS-kriging.py` (which is the same as the output *word.csv* of `./extract.sh` minus the column "context").
+It takes as input the file *word-data.txt* (which is the same as *word.csv* minus the column "context").
 
 The script will: 
-1. Plot a simple hierarchical cluster.
-2. Generate a Nexus (.nex) file for NeighborNet analysis, to be visualized with the [SplitsTree4](https://uni-tuebingen.de/en/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/algorithms-in-bioinformatics/software/splitstree/) software.
+1. Plot a simple hierarchical cluster of the languages in a parallel-word dataset. It currently shows how similar languages appear to be based on NULL-construction distributions.
+2. Generate a Nexus (.nex) file for NeighborNet analysis, to be visualized with the [SplitsTree4](https://uni-tuebingen.de/en/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/algorithms-in-bioinformatics/software/splitstree/) software. Similar to a traditional hierarchical cluster in many ways, a NeighborNet will simply not force a binary-tree type of classification.
 
 # Pretrained models
 
@@ -214,10 +211,8 @@ You can directly extract target words from either of these models by running `$ 
 a. In all models: *vie*, *kan*, *djk*, *kek*, *agr*, *mal*
 b. In *model4-LC-P* only: *mar*, *mya*, *nep*, *tel*
 2. Fix issue with display of some non-Latin characters in PDF output (notably all Arabic!). Note that the characters display normally in R studio (i.e. it must be an issue with both base R *pdf* and *CairoPDF*).
-3. Add references for Kriging method
-4. Add info on how NULLs are treated in the models
-7. Add on how many NAs we have per language based on best model
-8. Add what the best model is, and why.
+3. Add info on how NULLs are treated in the models.
+4. Add on how many NAs we have per language based on best model.
 
 ## References
 <a id="1">[1]</a> 
