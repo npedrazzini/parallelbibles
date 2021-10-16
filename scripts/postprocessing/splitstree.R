@@ -9,10 +9,12 @@ data2 <- data[ ,-1]
 data2 <- as.data.frame(t(data2))
 data2[] <- lapply(data2, function(x) if(is.factor(x)) as.character(x) else x)
 
+# Assign 1 to NULLs 0 to anything else
 data2[data2=='NULL'] <- '1'
 data2[data2!='1'] <- '0'
 data2[is.na(data2) == TRUE] <- '0'
 
+# Calculate Hamming distance between languages
 matr2 <- as.matrix(data2)
 hamm <- hamming.distance(matr2)
 
