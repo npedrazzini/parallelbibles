@@ -6,24 +6,24 @@ Word-alignment models for Bible translations in 100+ historical and contemporary
 ## Requirements
 
 1. Installation and dependencies: 
+    
+    - Download or clone the repository:
 
-Download or clone the repository:
+        `$ git clone https://github.com/npedrazzini/parallelbibles`
 
-`$ git clone https://github.com/npedrazzini/parallelbibles`
+    - From the root directory (./parallelbibles), build the repository:
 
-From the root directory (./parallelbibles), build the repository:
+        `$ make`
 
-`$ make`
-
-This will download and build [SyMGIZA++](https://github.com/emjotde/symgiza-pp) [[1]](#1) and install all the required dependencies.
+    This will download and build [SyMGIZA++](https://github.com/emjotde/symgiza-pp) [[1]](#1) and install all the required dependencies in a [venv](https://docs.python.org/3/library/venv.html) called *parallels-venv*.
 
 2. XML files, which can be of two formats:
  
-a. OPUS (untokenized) (from https://opus.nlpl.eu/bible-uedin.php)
+    - OPUS (untokenized) (from https://opus.nlpl.eu/bible-uedin.php)
 
-b. PROIEL (from https://proiel.github.io)
+    - PROIEL (from https://proiel.github.io)
 
-This repository comes with OPUS XMLs (in original-xmls/opus-xmls) and PROIEL XMLs for New Testament Greek, Old Church Slavonic and Gothic (in original-xmls/proiel-xmls).
+    This repository comes with OPUS XMLs (inside *original-xmls/opus-xmls*) and PROIEL XMLs for New Testament Greek, Old Church Slavonic and Gothic (inside *original-xmls/proiel-xmls*).
 
 ## Train word-alignment models
 
@@ -59,7 +59,7 @@ You will be prompted to enter:
 2. a target word (e.g. 'when') or multiple target words separated by hyphen (e.g. 'when-while-since')
 3. whether you want to generate the scripts necessary to run MDS on the dataset ('yes' or 'no')
 4. whether you also want to apply Kriging to the MDS maps ('yes' or 'no')
-5. whether you only want to extract words from the New Testament ('yes') or from bothe the Old and the New Testament ('no') <sup>[*](#myfootnote1)</sup>
+5. whether you only want to extract words from the New Testament ('yes') or from both the Old and the New Testament ('no') <sup>[*](#myfootnote1)</sup>
 
 The output will be a folder named as the target word (or words, hyphen-separated, if extracting multiple words at once) containing the following: 
 1. **word.csv**: CSV file for each word. The file will contain one occurrence per line, its citation (Bible verse), context, and the translations in each target language <sup>[**](#myfootnote2)</sup>.
@@ -67,8 +67,8 @@ The output will be a folder named as the target word (or words, hyphen-separated
 And if you chose to run MDS (with and without Kriging) it will also contain:
 
 2. **word-MDS.R**: an R script to run MDS (and Kriging, if you chose to), generating a single PDF with one map per language. These maps are static and generated using base R. Best for distant-reading stages in the data exploration <sup>[***](#myfootnote3)</sup>.
-3. **word-plotly.R**: an R script (alternative to word-MDS.R) generating multiple HTML files using the R package plotly. These maps are interactive and let you hover over the data points and look at the citation and source word in context. Best for close-reading stages in the data exploration.
-4. **word-data.txt**: the original data.
+3. **word-plotly.R**: an R script (alternative to *word-MDS.R*) generating multiple HTML files using the R package plotly. These maps are interactive and let you hover over the data points and look at the citation (Bible verse) and source word in context. Best for close-reading stages in the data exploration.
+4. **word-data.txt**: the original data in TXT format and the citation (Bible verse) as index (rather than column, as in word.csv) and without the 'context' column.
 5. **word-matrix.txt**: distance matrix between source word and target words.
 
 <a name="myfootnote1">*</a> This is because many languages lack the whole or large sections of the Old Testament, which will result in your dataset having many NAs (which you may or may not want to avoid).
