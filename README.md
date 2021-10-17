@@ -81,7 +81,7 @@ And if you chose to run MDS (with and without Kriging) it will also contain:
 
 `./scripts/postprocessing/splitstree.R`: this script will perform hierarchical clustering and NeighborNet analysis of the languages based on a criterion *x* (default: NULL-constructions).
 
-It takes as input the file *word-data.txt* (which is the same as *word.csv* minus the column "context").
+It takes as input the file *word-data.txt* described above.
 
 The script will: 
 1. Plot a simple hierarchical cluster of the languages in a parallel-word dataset. It currently shows how similar languages appear to be based on NULL-construction distributions.
@@ -89,12 +89,14 @@ The script will:
 
 # Pretrained models
 
+> NB: *model2-LC-NP* is stored in this repo using [Git LFS](https://git-lfs.github.com). If you wish to use that model, you should have Git LFS installed, else you will only see a pointer file.
+
 Four pretrained models currently come with this repository: 
 
-1. *model1-UC-P*: **U**pper case and with **P**unctuation. English is source language. All other languages (both from OPUS and PROIEL; however see Disclaimer) are targets.
-2. *model2-LC-NP*: **L**ower **C**ase and **N**o **P**unctuation. English is source language. All other languages (both from OPUS and PROIEL; however see Disclaimer) are targets.
-3. *model3-UC-NP*: **U**pper **C**ase and **N**o **P**unctuation. English is source language. All other languages (both from OPUS and PROIEL; however see Disclaimer) are targets.
-4. *model4-LC-P*: **L**ower **C**ase and **N**o **P**unctuation. English is source language. All other languages (both from OPUS and PROIEL; however see Disclaimer) are targets.
+1. *model1-UC-P*: **U**pper case and with **P**unctuation. English is source language. All other languages (both from OPUS and PROIEL; however see TODO) are targets.
+2. *model2-LC-NP*: **L**ower **C**ase and **N**o **P**unctuation. English is source language. All other languages (both from OPUS and PROIEL; however see TODO) are targets.
+3. *model3-UC-NP*: **U**pper **C**ase and **N**o **P**unctuation. English is source language. All other languages (both from OPUS and PROIEL; however see TODO) are targets.
+4. *model4-LC-P*: **L**ower **C**ase and **N**o **P**unctuation. English is source language. All other languages (both from OPUS and PROIEL; however see TODO) are targets.
 
 You can directly extract target words from either of these models by running `$ ./extract.sh`. You will be prompted to enter the name of the model you want to use.
 
