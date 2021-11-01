@@ -249,7 +249,7 @@ else:
         for i in range(len(langall)):
             p+="fig <- plot_ly()\n"
             p+="fig <- fig %>% \n"
-            p+="layout(title = "+langall[i][0][0]+") %>% \n"
+            p+="layout(title = \'"+langall[i][0][0]+"\') %>% \n"
             p+="add_trace(type='scatter', mode='markers', x = x, y = y, color=data$"+langall[i][0][0]+", hovertext=cont)\n"
             p+="htmlwidgets::saveWidget(as_widget(fig), \"./plotly-outputs/"+langall[i][0][0]+".html\")\n\n"
         with open('./{}/_TARGETWORDS_/{}/{}-plotly.R'.format(directme, target_word, target_word),'w') as f: 
